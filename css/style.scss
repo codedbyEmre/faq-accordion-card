@@ -1,0 +1,180 @@
+@import 'configs';
+
+*{
+    box-sizing: border-box;
+    font-family: $fontStack;
+}
+
+body{
+    position: relative;
+    font-size: 12px;
+    margin: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient($SoftViolet, $SoftBlue);
+    background-repeat: no-repeat;
+    padding: 2rem;
+}
+
+%chevrons{
+    position: absolute;
+    top: 2px;
+    right: 0;
+    cursor: pointer;
+    color: rgb(224, 150, 13);
+}
+
+.container{
+    max-width: 1368px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 50px hsl(240, 30%, 49%);
+    .accordion-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 800px;
+        .accordion-img{
+          flex: 11;
+          margin-right: 2rem;
+          transform: translateX(-4rem);
+          position: relative;
+          .box{
+              position: absolute;
+              left: -2rem;
+              bottom: 4rem;
+              width: 10rem;
+              height: 10rem;
+          }
+          .desktop-pattern{
+              position: absolute;
+          }
+          img{
+            max-width: 100%;
+            max-height: 100%;
+          }
+        }
+        .accordion-text{
+          flex: 9;
+          padding-right: 0.5rem;
+          h1{
+              font-size: 2rem;
+              margin-bottom: 2.75rem;
+              color: $VeryDarkDesaturatedBlue;
+              opacity: 0.9;
+          }
+          .accordion{
+            position: relative;
+            border-bottom: 1px solid $LightGrayishBlue;
+            h3{
+              font-weight: 400;
+              font-size: 1rem;
+              padding-right: 0.5rem;
+              opacity: 0.9;
+            }
+            p{
+              display: none;
+              font-weight: 400;
+              font-size: 0.85rem;
+              line-height: 1.4;
+              color: $DarkGrayishBlue;
+              width: 85%;
+            }
+            .open-accordion{
+              display: block;
+              @extend %chevrons;
+            }
+            .close-accordion{
+              display: none;
+              @extend %chevrons;
+            }
+          }
+        }
+    }  
+    .accordion-container{
+        .accordion-text{
+          .accordion.active{
+            p{
+              display: block;
+            }
+            .open-accordion{
+              display: none;
+              @extend %chevrons;
+            }
+            .close-accordion{
+              display: block;
+              @extend %chevrons;
+            }
+          }
+        }
+    }
+}
+
+.attribution{
+    position: absolute;
+    bottom: 1.5rem;
+    font-weight: 400;
+    font-size: 0.75rem;
+    z-index: -1;
+    a{
+        font-size: 0.9rem;
+        color: #fff;
+    }
+}
+
+@media(max-width: 800px){
+    .container{
+        .accordion-container{
+            flex-direction: column;
+            width: 550px;
+            .accordion-img{
+              flex: 1;
+              margin-right: 0;
+              transform: translateX(0rem);
+              position: relative;
+              img{
+                max-width: 100%;
+                max-height: 100%;
+              }
+            }
+            .accordion-text{
+              flex: 1;
+              padding-right: 0.5rem;
+              h3{
+                  width: 95%;
+              }
+            }
+        }
+    }
+}
+
+@media(max-width: 600px){
+    .container{
+        .accordion-container{
+            width: 375px;
+            .accordion-img{
+              img{
+                max-width: 100%;
+              }
+            }
+        }
+    }
+}
+
+@media(max-width: 400px){
+    .container{
+        .accordion-container{
+            width: 275px;
+            .accordion-img{
+              img{
+                max-width: 100%;
+              }
+            }
+        }
+    }
+}
